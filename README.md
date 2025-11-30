@@ -1,1 +1,47 @@
 # Alke-wallet
+
+Explicación del prototipo
+
+Este prototipo de Alke Wallet integra todas las lecciones definidas en el plan:
+
+Estructura y navegación (Lección 1):
+
+Organización clara de componentes y páginas
+
+Flujo de navegación entre las diferentes pantallas
+
+HTML semántico (Lección 2):
+
+Uso de etiquetas semánticas como <main>, <nav>, <section>
+
+Formularios estructurados con validaciones básicas
+
+Estilos y responsividad (Lección 3):
+
+Diseño atractivo con paleta de colores apropiada para fintech
+
+Interfaz completamente responsive que se adapta a diferentes dispositivos
+
+Bootstrap (Lección 4):
+
+Implementación de componentes de Bootstrap (navbar, cards, modales)
+
+Sistema de grid para diseño responsivo
+
+Clases utilitarias para espaciado y alineación
+
+JavaScript (Lección 5):
+
+Validación de credenciales en el login
+
+Gestión del saldo y transacciones
+
+Simulación de transferencias y depósitos
+
+jQuery (Lección 6):
+
+Manipulación del DOM para actualizar la interfaz
+
+Función de autocompletar en la búsqueda de contactos
+
+Animaciones y efectos para mejorar la experiencia de usuario
