@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alke Wallet - Prototipo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="menu.html">
+      <i class="fas fa-wallet me-2"></i>Alke Wallet
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="menu.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="transactions.html">Movimientos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="deposit.html">Depositar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sendmoney.html">Enviar Dinero</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" id="logoutBtn">Cerrar Sesión</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main id="main-content" class="container my-4">
+  <div id="login-page" class="page">
+    <div class="login-container">
+      <h2 class="text-center mb-4">Iniciar Sesión</h2>
+      <form id="loginForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" required>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Ingresar</button>
+        </div>
+      </form>
+      <div class="alert alert-danger mt-3 d-none" id="loginError">
+        Credenciales incorrectas. Intente nuevamente.
+      </div>
+    </div>
+  </div>
+
+  <div id="menu-page" class="page d-none">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Resumen de Cuenta</h5>
+            <p class="balance">$<span id="currentBalance">1,250.75</span></p>
+            <p class="text-muted">Saldo disponible</p>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <div class="card text-center h-100">
+              <div class="card-body">
+                <i class="fas fa-paper-plane menu-icon"></i>
+                <h5 class="card-title">Enviar Dinero</h5>
+                <p class="card-text">Realiza transferencias a otros usuarios</p>
+                <a href="sendmoney.html" class="btn btn-primary">Enviar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card text-center h-100">
+              <div class="card-body">
+                <i class="fas fa-download menu-icon"></i>
+                <h5 class="card-title">Depositar</h5>
+                <p class="card-text">Agrega fondos a tu cuenta</p>
+                <a href="deposit.html" class="btn btn-success">Depositar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Últimos Movimientos</h5>
+            <div id="recentTransactions">
+            </div>
+            <a href="transactions.html" class="btn btn-outline-primary btn-sm mt-2">Ver todos</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Contactos Frecuentes</h5>
+            <div id="frequentContacts">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="sendmoney-page" class="page d-none">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Enviar Dinero</h5>
+            <form id="sendMoneyForm">
+              <div class="mb-3 search-box">
+                <label for="contactSearch" class="form-label">Buscar Contacto</label>
+                <input type="text" class="form-control" id="contactSearch" placeholder="Nombre o email del contacto">
+                <div class="search-results" id="searchResults"></div>
+              </div>
+              <div class="mb-3">
+                <label for="amount" class="form-label">Monto</label>
+                <input type="number" class="form-control" id="amount" min="1" step="0.01" required>
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Descripción</label>
+                <textarea class="form-control" id="description" rows="3"></textarea>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Enviar Dinero</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mt-4 mt-md-0">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Agregar Nuevo Contacto</h5>
+            <form id="addContactForm">
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="contactName" required>
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email</label>
+                <input type="email" class="form-control" id="contactEmail" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success">Agregar Contacto</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="deposit-page" class="page d-none">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Realizar Depósito</h5>
+            <form id="depositForm">
+              <div class="mb-3">
+                <label for="depositAmount" class="form-label">Monto a Depositar</label>
+                <input type="number" class="form-control" id="depositAmount" min="1" step="0.01" required>
+              </div>
+              <div class="mb-3">
+                <label for="paymentMethod" class="form-label">Método de Pago</label>
+                <select class="form-select" id="paymentMethod" required>
+                  <option value="">Seleccione un método</option>
+                  <option value="credit">Tarjeta de Crédito</option>
+                  <option value="debit">Tarjeta de Débito</option>
+                  <option value="transfer">Transferencia Bancaria</option>
+                </select>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success">Realizar Depósito</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="transactions-page" class="page d-none">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Últimos Movimientos</h5>
+        <div id="allTransactions">
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="modal fade" id="messageModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="messageModalTitle">Mensaje</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="messageModalBody">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
